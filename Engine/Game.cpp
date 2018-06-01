@@ -53,6 +53,7 @@ void Game::UpdateModel()
 
 		if(goal.isEatenAndReposition(snake))
 			snake.Grow();
+
 		snake.Update(up, down, left, right);
 		gameOver = snake.IsSelfColliding();
 	}
