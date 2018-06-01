@@ -41,6 +41,7 @@ private:
 	/*  User Functions              */
 	void Controls(bool& up, bool& down, bool& left, bool& right);
 
+
 	/********************************/
 private:
 	MainWindow& wnd;
