@@ -40,6 +40,7 @@ private:
 	/********************************/
 	/*  User Functions              */
 	void Controls(bool& up, bool& down, bool& left, bool& right);
+
 	/********************************/
 private:
 	MainWindow& wnd;
@@ -52,5 +53,6 @@ private:
 	bool gameOver = false;
 	int timeCounter = 0;
 	int framesPerMove = 4;
+
 	/********************************/
 };
