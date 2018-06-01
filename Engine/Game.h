@@ -54,5 +54,6 @@ private:
 	int timeCounter = 0;
 	int framesPerMove = 4;
 
+
 	/********************************/
 };
