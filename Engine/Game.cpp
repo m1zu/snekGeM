@@ -41,15 +41,17 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	const float dt = frameTimer.Mark();
+
 	bool up = wnd.kbd.KeyIsPressed(VK_UP);
 	bool down = wnd.kbd.KeyIsPressed(VK_DOWN);
 	bool left = wnd.kbd.KeyIsPressed(VK_LEFT);
 	bool right = wnd.kbd.KeyIsPressed(VK_RIGHT);
 	Controls(up, down, left, right);
 
-	timeCounter++;
-	if (!gameOver && timeCounter > framesPerMove) {
-		timeCounter = 0;
+	movementTimer += dt;
+	if (!gameOver && movementTimer > movementPeriod) {
+		movementTimer = 0.0f;
 
 		if(goal.isEatenAndReposition(snake))
 			snake.Grow();

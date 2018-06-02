@@ -26,6 +26,7 @@
 #include "Board.h"
 #include "Snake.h"
 #include "Goal.h"
+#include "FrameTimer.h"
 
 class Game
 {
@@ -48,13 +49,12 @@ private:
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
+	FrameTimer frameTimer;
+	float movementTimer;
+	const float movementPeriod = .1f;
 	Board board;
 	Snake snake;
 	Goal goal;
 	bool gameOver = false;
-	int timeCounter = 0;
-	int framesPerMove = 4;
-
-
 	/********************************/
 };
