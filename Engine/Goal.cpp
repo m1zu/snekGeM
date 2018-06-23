@@ -7,8 +7,8 @@ Goal::Goal(const Snake& snake)
 	loc(0, 0),
 	c(255, 0, 0),
 	rng(std::random_device()()),
-	xDist(0, Board::GetWidth()-1),
-	yDist(0, Board::GetHeight()-1)
+	xDist(0, Board::width-1),
+	yDist(0, Board::height-1)
 {
 	Placement(snake);
 }
