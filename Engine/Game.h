@@ -28,6 +28,7 @@
 #include "Goal.h"
 #include "FrameTimer.h"
 #include "Obstacles.h"
+#include "Poisonfield.h"
 
 class Game
 {
@@ -52,11 +53,13 @@ private:
 	/*  User Variables              */
 	FrameTimer frameTimer;
 	float movementTimer;
-	const float movementPeriod = .1f;
+	float movementPeriod = 0.45f;
+	float speedUp = 0.9f;
 	Board board;
 	Snake snake;
 	Goal goal;
 	Obstacles obstacles;
+	Poisionfield poisonfield;
 	bool gameOver = false;
 	/********************************/
 };

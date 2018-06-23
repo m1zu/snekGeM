@@ -3,7 +3,9 @@
 
 Board::Board(Graphics & gfx)
 	:
-	gfx(gfx)
+	gfx(gfx),
+	rng(std::random_device()()),
+	oneDimMappedGridDist(0, width*height)
 {
 	assert((Graphics::ScreenWidth - 2 * borderWidth) % dimension == 0);
 	assert((Graphics::ScreenHeight - 2 * borderWidth) % dimension == 0);
@@ -24,5 +26,10 @@ void Board::DrawBorder() const
 	gfx.DrawRectanglePoints(borderWidth * 3 / 4, gfx.ScreenHeight-borderWidth, gfx.ScreenWidth - borderWidth * 3 / 4, gfx.ScreenHeight- borderWidth*3/4, Colors::MakeRGB(0, 0, 100));
 	gfx.DrawRectanglePoints(borderWidth * 3 / 4, borderWidth, borderWidth, gfx.ScreenHeight - borderWidth, Colors::MakeRGB(0, 0, 100));
 	gfx.DrawRectanglePoints(gfx.ScreenWidth - borderWidth, borderWidth, gfx.ScreenWidth - borderWidth*3/4, gfx.ScreenHeight - borderWidth, Colors::MakeRGB(0, 0, 100));
+}
+
+int Board::GetRandom_1Dmapped_gridPos()
+{
+	return oneDimMappedGridDist(rng);
 }
 

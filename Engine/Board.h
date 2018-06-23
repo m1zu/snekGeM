@@ -2,6 +2,7 @@
 
 #include "Graphics.h"
 #include "Location.h"
+#include <random>
 
 class Board
 {
@@ -9,6 +10,7 @@ public:
 	Board(Graphics& gfx);
 	void DrawCell(const Location& loc, Color c) const;
 	void DrawBorder() const;
+	int GetRandom_1Dmapped_gridPos();
 
 private:
 	static constexpr int dimension = 20;
@@ -20,5 +22,8 @@ public:
 
 private:
 	Graphics & gfx;
+
+	std::mt19937 rng;
+	std::uniform_int_distribution<int> oneDimMappedGridDist;
 };
 

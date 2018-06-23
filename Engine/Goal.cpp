@@ -2,13 +2,11 @@
 #include "Board.h"
 
 
-Goal::Goal(const Snake& snake)
+Goal::Goal(const Snake& snake, Board& brd)
 	:
 	loc(0, 0),
 	c(255, 0, 0),
-	rng(std::random_device()()),
-	xDist(0, Board::width-1),
-	yDist(0, Board::height-1)
+	brd(brd)
 {
 	Placement(snake);
 }
@@ -18,8 +16,9 @@ void Goal::Placement(const Snake & snake)
 	bool  isPlacedOnSnake = false;
 	do {
 		bool isPlacedOnSnake = false;
-		loc.x = xDist(rng);
-		loc.y = yDist(rng);
+		const int oneDimMappedLoc = brd.GetRandom_1Dmapped_gridPos();
+		loc.x = oneDimMappedLoc%brd.width;
+		loc.y = oneDimMappedLoc/brd.width;
 		for (int i = 0; i < snake.GetnSegmentsUsed(); ++i) {
 			if (loc == snake.GetSegmentLocation(i))
 				isPlacedOnSnake = true;

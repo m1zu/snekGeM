@@ -26,7 +26,8 @@ Game::Game( MainWindow& wnd )
 	wnd( wnd ),
 	gfx( wnd ),
 	board(gfx),
-	goal(snake)
+	goal(snake, board),
+	poisonfield(board)
 {
 	snake.Init(Location(5, 3), 5);
 }
@@ -61,6 +62,8 @@ void Game::UpdateModel()
 
 		if (goalConsumption)
 			obstacles.spawnObstacle(snake);
+		if (poisonfield.collisionWith(snake))
+			movementPeriod *= speedUp;
 
 		if(snake.IsSelfColliding() || obstacles.collidingWith(snake))
 			gameOver = true;
@@ -89,8 +92,9 @@ void Game::Controls(bool& up, bool& down, bool& left, bool& right)
 
 void Game::ComposeFrame()
 {
-	snake.Draw(board);
+	poisonfield.Draw(board);
 	goal.Draw(board);
+	snake.Draw(board);
 	board.DrawBorder();
 	obstacles.Draw(board);
 }
