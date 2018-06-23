@@ -132,14 +132,14 @@ void Snake::Segment::Follow(const Location & destination)
 void Snake::Segment::GridBorderTransition()
 {
 	if (loc.x < 0)
-		loc.x = Board::GetWidth() - 1;
+		loc.x = Board::width - 1;
 
-	if (loc.x >= Board::GetWidth())
+	if (loc.x >= Board::width)
 		loc.x = 0;
 
 	if (loc.y < 0)
-		loc.y = Board::GetHeight() - 1;
+		loc.y = Board::height - 1;
 
-	if (loc.y >= Board::GetHeight())
+	if (loc.y >= Board::height)
 		loc.y = 0;
 }
