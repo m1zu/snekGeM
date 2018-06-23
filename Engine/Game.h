@@ -27,6 +27,7 @@
 #include "Snake.h"
 #include "Goal.h"
 #include "FrameTimer.h"
+#include "Obstacles.h"
 
 class Game
 {
@@ -55,6 +56,7 @@ private:
 	Board board;
 	Snake snake;
 	Goal goal;
+	Obstacles obstacles;
 	bool gameOver = false;
 	/********************************/
 };

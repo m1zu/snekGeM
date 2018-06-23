@@ -53,11 +53,17 @@ void Game::UpdateModel()
 	if (!gameOver && movementTimer > movementPeriod) {
 		movementTimer = 0.0f;
 
-		if(goal.isEatenAndReposition(snake))
+		bool goalConsumption = goal.isEatenAndReposition(snake);
+		if (goalConsumption) {
 			snake.Grow();
-
+		}
 		snake.Update(up, down, left, right);
-		gameOver = snake.IsSelfColliding();
+
+		if (goalConsumption)
+			obstacles.spawnObstacle(snake);
+
+		if(snake.IsSelfColliding() || obstacles.collidingWith(snake))
+			gameOver = true;
 	}
 }
 
@@ -86,4 +92,5 @@ void Game::ComposeFrame()
 	snake.Draw(board);
 	goal.Draw(board);
 	board.DrawBorder();
+	obstacles.Draw(board);
 }
